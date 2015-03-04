@@ -1,0 +1,9 @@
+C:\Users\Craig\Google Drive\Workspace\Xamarin\Tutorials\MapOverlay01\MapOverlay01\bin\iPhoneSimulator\Debug\MapOverlay01.exe
+C:\Users\Craig\Google Drive\Workspace\Xamarin\Tutorials\MapOverlay01\MapOverlay01\bin\iPhoneSimulator\Debug\MapOverlay01.pdb
+C:\Users\Craig\Google Drive\Workspace\Xamarin\Tutorials\MapOverlay01\MapOverlay01\obj\iPhoneSimulator\Debug\ibtool\MainStoryboard.storyboardc\BYZ-38-t0r-view-8bC-Xf-vdC.nib
+C:\Users\Craig\Google Drive\Workspace\Xamarin\Tutorials\MapOverlay01\MapOverlay01\obj\iPhoneSimulator\Debug\ibtool\MainStoryboard.storyboardc\Info.plist
+C:\Users\Craig\Google Drive\Workspace\Xamarin\Tutorials\MapOverlay01\MapOverlay01\obj\iPhoneSimulator\Debug\ibtool\MainStoryboard.storyboardc\UIViewController-BYZ-38-t0r.nib
+C:\Users\Craig\Google Drive\Workspace\Xamarin\Tutorials\MapOverlay01\MapOverlay01\obj\iPhoneSimulator\Debug\
+C:\Users\Craig\Google Drive\Workspace\Xamarin\Tutorials\MapOverlay01\MapOverlay01\obj\iPhoneSimulator\Debug\MapOverlay01.csprojResolveAssemblyReference.cache
+C:\Users\Craig\Google Drive\Workspace\Xamarin\Tutorials\MapOverlay01\MapOverlay01\obj\iPhoneSimulator\Debug\MapOverlay01.exe
+C:\Users\Craig\Google Drive\Workspace\Xamarin\Tutorials\MapOverlay01\MapOverlay01\obj\iPhoneSimulator\Debug\MapOverlay01.pdb
