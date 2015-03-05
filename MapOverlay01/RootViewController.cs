@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Drawing;
-using Foundation;
 using UIKit;
 using System.Collections.Generic;
 using CoreLocation;
@@ -10,9 +8,9 @@ namespace MapOverlay01
 {
     public partial class RootViewController : UIViewController
     {
-        MKMapView map;
-        MKCircle circleOverlay;
-        MKCircleRenderer circleRenderer;
+        private MKMapView map;
+        double lat = 51.192437;
+        double lon = 6.428730;
 
         public RootViewController(IntPtr handle)
             : base(handle)
@@ -28,7 +26,7 @@ namespace MapOverlay01
         {
             map = new MKMapView(UIScreen.MainScreen.Bounds);
             map.MapType = MKMapType.Standard;
-            CLLocationCoordinate2D mapCenter = new CLLocationCoordinate2D(51.192437, 6.428730);
+            CLLocationCoordinate2D mapCenter = new CLLocationCoordinate2D(lat, lon);
             MKCoordinateRegion mapRegion = MKCoordinateRegion.FromDistance(mapCenter, 1000, 1000);
             map.CenterCoordinate = mapCenter;
             map.Region = mapRegion;
@@ -39,33 +37,39 @@ namespace MapOverlay01
         {
             base.ViewDidLoad();
 
-            List<CLLocationCoordinate2D> coordList = new List<CLLocationCoordinate2D>();
+            //List<CLLocationCoordinate2D> coordList = new List<CLLocationCoordinate2D>();
 
-            coordList.Add(new CLLocationCoordinate2D(51.193822, 6.427185));
-            coordList.Add(new CLLocationCoordinate2D(51.193862, 6.422465));
-            coordList.Add(new CLLocationCoordinate2D(51.190581, 6.422036));
-            coordList.Add(new CLLocationCoordinate2D(51.189142, 6.426220));
-            coordList.Add(new CLLocationCoordinate2D(51.191172, 6.429846));
+            //coordList.Add(new CLLocationCoordinate2D(51.193822, 6.427185));
+            //coordList.Add(new CLLocationCoordinate2D(51.193862, 6.422465));
+            //coordList.Add(new CLLocationCoordinate2D(51.190581, 6.422036));
+            //coordList.Add(new CLLocationCoordinate2D(51.189142, 6.426220));
+            //coordList.Add(new CLLocationCoordinate2D(51.191172, 6.429846));
+            
+            List<MKCircle> circleOverlays = new List<MKCircle>();
+            List<MKCircleRenderer> circleRenderers = new List<MKCircleRenderer>();
 
-            this.map.OverlayRenderer = (m, o) =>
-            {
-                if (circleRenderer == null)
+            Random rand = new Random();
+
+            //for (int i = 0; i < coordList.Count; i++)
+            for (int i = 0; i < 50; i++)
+            {                
+                this.map.OverlayRenderer = (m, o) =>
                 {
-                    circleRenderer = new MKCircleRenderer(o as MKCircle);
-                    circleRenderer.FillColor = UIColor.Cyan;
-                    circleRenderer.Alpha = 0.5f;
-                }
-                return circleRenderer;
-            };
+                    circleRenderers.Add(new MKCircleRenderer(o as MKCircle));
+                    circleRenderers[i].FillColor = UIColor.Red;
+                    circleRenderers[i].Alpha = 0.2f;
+                    return circleRenderers[i];
+                };
+                
+                lat += ((rand.NextDouble() * 2.0) - 1.0) / 750.0;
+                lon += ((rand.NextDouble() * 2.0) - 1.0) / 750.0;
 
+                CLLocationCoordinate2D circCoords = new CLLocationCoordinate2D(lat, lon);
 
-            foreach (CLLocationCoordinate2D c in coordList)
-            {
+                //circleOverlays.Add(MKCircle.Circle(coordList[i], 100));
+                circleOverlays.Add(MKCircle.Circle(circCoords, 100));
 
-                circleOverlay = MKCircle.Circle(c, 100);
-
-                this.map.AddOverlay(circleOverlay);        // draw circles
-                this.map.AddAnnotation(circleOverlay);     // drops pins                
+                this.map.AddOverlay(circleOverlays[i]);          
             }
         }
     }
